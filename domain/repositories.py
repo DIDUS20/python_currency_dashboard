@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 
+
 class CurrencyRepository(ABC):
 
     @abstractmethod
@@ -19,5 +20,9 @@ class CurrencyRepository(ABC):
         pass
     
 class CurrencyRepositoryError(Exception):
-    "Błąd podczas pobierania danych z repozytorium walut"
-    pass
+    def __init__(self, message: str):
+        self.message = message
+        super().__init__(message)
+
+    def __str__(self) -> str:
+        return self.message

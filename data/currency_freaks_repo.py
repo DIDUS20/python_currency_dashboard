@@ -26,10 +26,9 @@ class CurrencyRepo(CurrencyRepository):
             data = resp.json()
         except ValueError:
             raise ValueError("Problem z danymi")
-        except CurrencyRepositoryError:
-            raise CurrencyRepositoryError("Problem z repo")
         except Exception:
-            raise Exception("Coś jest nie tak ... tylko co ?")
+            raise CurrencyRepositoryError("Problem z repo")
+        
         
         all_rates = data.get("conversion_rates", {})
         self.data = {cur: all_rates[cur] for cur in self.list_cur if cur in all_rates}

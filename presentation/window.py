@@ -58,6 +58,13 @@ class App(ctk.CTk):
             width=120,
         )
         self.base_currency_menu.pack(side="left", padx=10)
+        
+        self.base_currency_error = ctk.CTkLabel(
+            frame,
+            text="",
+            fg_color=self.PALETTE["card"],
+            text_color=self.PALETTE["error"]
+        )
 
         button = ctk.CTkButton(
             frame,
@@ -172,14 +179,14 @@ class App(ctk.CTk):
 
     def _ChangeBaseCurrency(self):
         new_base = self.base_currency_var.get().strip().upper()
-        if not new_base:
-            self.converter_error.set("Podaj kod waluty.")
+        if not new_base or new_base not in self.repo.get_list():
+            self.base_currency_error.configure(text="Podaj kod waluty. np: PLN")
             return
 
-        self.repo.change_base_currency(new_base)
+        #self.repo.change_base_currency(new_base)
         self.base_currency_var.set(new_base)
         self.base_currency_menu.set(new_base)
-
+        self.base_currency_error.configure(text="")
         self._UpdateCurrencyList()
         
     def _UpdateCurrencyList(self):

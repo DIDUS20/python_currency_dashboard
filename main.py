@@ -19,5 +19,3 @@ if __name__ == "__main__":
     repo, config = build_repository()
     app = App(repo=repo)
     app.mainloop()
-    
-# pyinstaller --onefile main.py // do produkcji jednego pliku exe
