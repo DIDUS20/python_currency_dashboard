@@ -1,0 +1,6 @@
+{
+    "api-key" : "2d45cb180698dff54859be09",
+    "api-host" : "https://v6.exchangerate-api.com/v6",
+    "default_list" : ["USD", "EUR", "PLN", "GBP", "JPY", "AUD", "CAD", "CHF", "CNY", "SEK", "NZD", "MXN", "SGD", "HKD", "NOK", "KRW", "TRY", "RUB", "INR", "BRL", "ZAR"],
+    "default_base" : "USD"
+}
