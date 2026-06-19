@@ -183,7 +183,7 @@ class App(ctk.CTk):
             self.base_currency_error.configure(text="Podaj kod waluty. np: PLN")
             return
 
-        #self.repo.change_base_currency(new_base)
+        self.repo.change_base_currency(new_base)
         self.base_currency_var.set(new_base)
         self.base_currency_menu.set(new_base)
         self.base_currency_error.configure(text="")
