@@ -26,6 +26,8 @@ class CurrencyRepo(CurrencyRepository):
             data = resp.json()
         except ValueError:
             raise ValueError("Problem z danymi")
+        except ConnectionError:
+            raise CurrencyRepositoryError("Problem z połączeniem")
         except Exception:
             raise CurrencyRepositoryError("Problem z repo")
         
