@@ -1,6 +1,5 @@
 
 import requests
-from domain.entities import Currency
 from domain.repositories import CurrencyRepository, CurrencyRepositoryError
 
 
