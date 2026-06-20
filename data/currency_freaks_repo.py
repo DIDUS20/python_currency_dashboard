@@ -24,12 +24,12 @@ class CurrencyRepo(CurrencyRepository):
             resp = requests.get(url, timeout=10)
             resp.raise_for_status()
             data = resp.json()
+        except requests.exceptions.InvalidURL:
+            raise CurrencyRepositoryError("Problem z url")
         except ValueError:
-            raise ValueError("Problem z danymi")
-        except ConnectionError:
-            raise CurrencyRepositoryError("Problem z połączeniem")
-        except Exception:
-            raise CurrencyRepositoryError("Problem z repo")
+            raise ValueError("Problem ze zmiennymi")
+        except requests.exceptions.ConnectionError:
+            raise CurrencyRepositoryError("Problem z połączeniem do api")
         
         
         all_rates = data.get("conversion_rates", {})
